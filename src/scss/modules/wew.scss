@@ -1,0 +1,78 @@
+// Overlay Style
+.exit-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:$backOverlay;
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+// Popup Style
+.exit-popup {
+  font-family: $font;
+  width: 60vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  z-index: 132;
+  background-color: $popupBackground;
+  padding: 1rem;
+  border: $popupBorder;
+  border-radius: $popupBorderRadius;
+}
+
+// Hide popup
+.exit-hidden {
+  display: none;
+}
+
+// Close Button Pointer
+.exit-close,
+.exit-close-x {
+  cursor: pointer;
+}
+
+// Close Button Align
+.exit-close {
+  text-align: center;
+}
+
+// Close Button Position
+.exit-close-x {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+// Popup Buttons
+.exit-close,
+.exit-go-to-btn {
+  display: block;
+  background-color: $buttonsBackground;
+  border-radius: $popupBorderRadius;
+  margin: 0 auto 10px auto;
+  padding: 0.5rem 2rem;
+  @include min(medium) {
+    display: inline-block;
+  }
+}
+
+// Popup Buttons Align
+.exit-go-to-btn {
+  text-align: center;
+  text-decoration: none;
+}
+
+// Buttons Flex on Desktop
+.exit-buttons {
+  @include min(medium) {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+}
