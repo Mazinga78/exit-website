@@ -1,6 +1,7 @@
 $backOverlay:rgba(0, 0, 0, 0.5);
-$font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande','Lucida Sans', Arial, sans-serif;
+$font: inherit;
 $popupBackground: #fff;
-$popupBorder: blue;
+$popupBorder: blue solid 5px;
 $popupBorderRadius: 15px;
-$buttonsBackground: red;
+$buttonsConfirmBackground: green;
+$buttonsCancelBackground: red;

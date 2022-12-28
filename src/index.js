@@ -68,7 +68,7 @@ import './scss/style.scss';
   
   // Countdown Function
   function exitStartTimer(duration, display, allLink) {
-    exitTimerDisplay.textContent = '20';
+    exitTimerDisplay.textContent = '10';
   
     var timer = duration,
       seconds;
@@ -128,9 +128,11 @@ import './scss/style.scss';
   
       // Set link href on click
       let hreflink = this.href;
-  
+
+      let classLink = e.target.className;
+
       // Actions when is external link
-      if (isExternalLink(hreflink)) {
+      if (isExternalLink(hreflink) && (!classLink.includes("noExitNotifier"))) {
         // Set external link to Confirm Button
         exitGoToBtn.href = hreflink;
         // Print link 

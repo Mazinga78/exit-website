@@ -11,10 +11,10 @@ class exitWebsitePlugin
 {
   function __construct()
   {
-    add_action('wp_enqueue_scripts', array($this, 'wew_scripts'));
-    add_action('admin_menu', array($this, 'adminPage'));
-    add_action('admin_init', array($this, 'settings'));
-    add_action('get_footer', array($this, 'wew_popup'));
+    add_action('wp_enqueue_scripts', array($this, 'wpew_scripts'));
+    //add_action('admin_menu', array($this, 'adminPage'));
+    //add_action('admin_init', array($this, 'settings'));
+    add_action('get_footer', array($this, 'wpew_popup'));
   }
 
   function adminPage()
@@ -42,13 +42,13 @@ class exitWebsitePlugin
     ));
   }
 
-  function wew_scripts()
+  function wpew_scripts()
   {
-    wp_enqueue_style('wew_style', plugin_dir_url(__FILE__) . '/build/style-index.css');
-    wp_enqueue_script('wew_scripts', plugin_dir_url(__FILE__) . 'test.js', array(), '1.0.0', true);
+    wp_enqueue_style('wpew_style', plugin_dir_url(__FILE__) . '/build/style-index.css');
+    wp_enqueue_script('wpew_scripts', plugin_dir_url(__FILE__) . '/build/index.js', array(), '1.0.0', true);
   }
 
-  function wew_popup()
+  function wpew_popup()
   {
   ?>
 
@@ -64,8 +64,8 @@ class exitWebsitePlugin
         s
       </p>
       <div class="exit-buttons">
-        <div class="exit-close">Chiudi</div>
-        <a href="#" class="exit-go-to-btn" target="_blank">Vai al sito</a>
+        <div class="exit-close exit-btn">Chiudi</div>
+        <a href="#" class="exit-go-to-btn exit-btn" target="_blank">Vai al sito</a>
       </div>
     </div>
     <div class="exit-overlay exit-hidden"></div>
