@@ -1,12 +1,18 @@
 <?php
 /*
-    Plugin Name: Exit Website
-    Description: On External Webiste link click open a modal popup with confirm exit action
-    Version: 1.0
-    Author: Diego Pecivalle 
-  */
+  Plugin Name: Exit Website
+  Description: On External Webiste link click open a modal popup with confirm exit action
+  Version: 1.0
+  Author: Diego Pecivalle 
+*/
 
 
+
+/*
+*
+* Define Plugin Main Class
+*
+*/
 class exitWebsitePlugin
 {
   function __construct()
@@ -17,36 +23,23 @@ class exitWebsitePlugin
     add_action('get_footer', array($this, 'wpew_popup'));
   }
 
-  function adminPage()
-  {
-    add_options_page('Exit Website Settings', 'Exit Website', 'manage_options', 'exit-website-settings-page', array($this, 'exitHTML'));
-  }
-
-  function exitHTML()
-  { ?>
-    ciao ecco il mio pimoplugin
-  <?php
-  }
-
-  function settings()
-  {
-    register_setting('exitWebsite', 'ews_title', array(
-      'sanitize_callback' => 'sanitize_text_field',
-      'default' => 'Ecco il mio titolo'
-    ));
-
-
-    register_setting('exitWebsite', 'ews_text', array(
-      'sanitize_callback' => 'sanitize_text_field',
-      'default' => 'stai lasciando il sito, clicca su confemra per lasciare, opure annula per restare',
-    ));
-  }
+  /*
+  *
+  * Inlcude Plugin Scripts and styles
+  *
+  */
 
   function wpew_scripts()
   {
     wp_enqueue_style('wpew_style', plugin_dir_url(__FILE__) . '/build/style-index.css');
     wp_enqueue_script('wpew_scripts', plugin_dir_url(__FILE__) . '/build/index.js', array(), '1.0.0', true);
   }
+
+  /*
+  *
+  * Define Plugin Popup Html
+  *
+  */
 
   function wpew_popup()
   {
@@ -69,8 +62,57 @@ class exitWebsitePlugin
       </div>
     </div>
     <div class="exit-overlay exit-hidden"></div>
-<?php
 
+  <?php
+  }
+
+  /*
+  *
+  * Define Plugin Setting Page
+  *
+  */
+
+  function adminPage()
+  {
+
+    add_options_page('Exit Website Settings', 'Exit Website', 'manage_options', 'exit-website-settings-page', array($this, 'exitHTML'));
+  
+  }
+
+  /*
+  *
+  * Define Plugin Html Page
+  *
+  */
+
+  function exitHTML()
+  { 
+    ?>
+    
+    ciao ecco il mio pimoplugin
+
+  <?php
+  }
+
+
+  /*
+  *
+  * Register Plugin Options
+  *
+  */
+
+  function settings()
+  {
+    register_setting('exitWebsite', 'ews_title', array(
+      'sanitize_callback' => 'sanitize_text_field',
+      'default' => 'Ecco il mio titolo'
+    ));
+
+
+    register_setting('exitWebsite', 'ews_text', array(
+      'sanitize_callback' => 'sanitize_text_field',
+      'default' => 'stai lasciando il sito, clicca su confemra per lasciare, opure annula per restare',
+    ));
   }
 }
 

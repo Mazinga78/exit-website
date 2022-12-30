@@ -1,7 +1,19 @@
+// Set Colors
+$primaryColor: #eee333;
+$secondaryColor: #236def; 
+$backColor: #eee;
+
+// Overlay Colors Skin
 $backOverlay:rgba(0, 0, 0, 0.5);
+// Popup Fonts
 $font: inherit;
-$popupBackground: #fff;
-$popupBorder: blue solid 5px;
+// Popup Background Color
+$popupBackground: $backColor;
+// Popup Border
+$popupBorder: $primaryColor solid 5px;
+// Popup Border Radius
 $popupBorderRadius: 15px;
-$buttonsConfirmBackground: green;
-$buttonsCancelBackground: red;
+// Popup Confirm Button Color 
+$buttonsConfirmBackground: $primaryColor;
+// Popup Cancel Button Color 
+$buttonsCancelBackground: $secondaryColor;
