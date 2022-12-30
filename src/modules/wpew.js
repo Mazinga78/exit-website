@@ -1,5 +1,3 @@
-'use strict';
-
 // Select all link in page
 const allLink = document.querySelectorAll('a');
 // Select Link Place into Modal
@@ -23,7 +21,7 @@ const exitHrefPrink = document.querySelector('.exit-href-print');
 function exitCloseOverlay(data) {
   exitOverlay.addEventListener('click', function () {
     clearInterval(data);
-    exitTimerDisplay.textContent = '100';
+    exitTimerDisplay.textContent = '10';
     exitOverlay.classList.add('exit-hidden');
     exitPopup.classList.add('exit-hidden');
   });
@@ -33,7 +31,7 @@ function exitCloseOverlay(data) {
 function exitClosePopupBtn(data) {
   exitCloseBtn.addEventListener('click', function () {
     clearInterval(data);
-    exitTimerDisplay.textContent = '100';
+    exitTimerDisplay.textContent = '10';
     exitOverlay.classList.add('exit-hidden');
     exitPopup.classList.add('exit-hidden');
   });
@@ -43,7 +41,7 @@ function exitClosePopupBtn(data) {
 function exitClosePopupBtnX(data) {
   exitCloseBtnX.addEventListener('click', function () {
     clearInterval(data);
-    exitTimerDisplay.textContent = '100';
+    exitTimerDisplay.textContent = '10';
     exitOverlay.classList.add('exit-hidden');
     exitPopup.classList.add('exit-hidden');
   });
@@ -66,16 +64,16 @@ function exitStopTimer(display, intervallo) {
 
 // Countdown Function
 function exitStartTimer(duration, display, allLink) {
-  exitTimerDisplay.textContent = '100';
+  exitTimerDisplay.textContent = '10';
 
   var timer = duration,
     seconds;
 
   let intervallo = setInterval(function () {
-    seconds = parseInt(timer % 60, 100);
+    seconds = parseInt(timer % 60, 10);
 
-    // Put 0 berfore numbers < 100
-    seconds = seconds < 100 ? '0' + seconds : seconds;
+    // Put 0 berfore numbers < 10
+    seconds = seconds < 10 ? '0' + seconds : seconds;
 
     // Print Countdown
     display.textContent = seconds;
@@ -108,7 +106,7 @@ function exitStartTimer(duration, display, allLink) {
       exitStopTimer(display, intervallo);
       window.location.href = allLink;
     }
-  }, 10000);
+  }, 1000);
 }
 
 // For Loop through all page link to check which is external
@@ -127,18 +125,20 @@ for (let i = 0; i < allLink.length; i++) {
     // Set link href on click
     let hreflink = this.href;
 
+    let classLink = e.target.className;
+
     // Actions when is external link
-    if (isExternalLink(hreflink)) {
+    if (isExternalLink(hreflink) && !classLink.includes('noExitNotifier')) {
       // Set external link to Confirm Button
       exitGoToBtn.href = hreflink;
-      // Print link 
+      // Print link
       exitHrefPrink.textContent = hreflink;
       // Show Overlay
       exitOverlay.classList.remove('exit-hidden');
       // Show Modal Box
       exitPopup.classList.remove('exit-hidden');
       // Start Timer
-      exitStartTimer(100, exitTimerDisplay, hreflink);
+      exitStartTimer(10, exitTimerDisplay, hreflink);
     } else {
       // Go Directly To internal link
       window.location.href = hreflink;
