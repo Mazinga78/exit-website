@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+build/
+
 # User-specific files
 *.rsuser
 *.suo
@@ -351,5 +353,4 @@ MigrationBackup/
 
 # Exclude Build Dir
 .vscode/
-build/
 package-lock.json
